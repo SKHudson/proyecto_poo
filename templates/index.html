@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>Miscelanea "La Pasadita"</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid"> 
+          <a class="navbar-brand" href="#">La Pasadita</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index">Registro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="productos">Tabla</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="container mt-5">
+      <form action="/index" method="post">
+        <div class="form-group">
+          <label for="producto">Nombre del producto</label>
+          <input type="text" class="form-control" id="producto" placeholder="Producto" name="producto">
+        </div>
+        <div class="form-group">
+          <label for="cantidad">Cantidad del producto</label>
+          <input type="number" class="form-control" id="cantidad" placeholder="Cantidad" name="cantidad">
+        </div>
+        <div class="form-group">
+          <label for="precio">Precio del producto</label>
+          <input type="number" step="0.01" class="form-control" id="precio" placeholder="Precio" name="precio">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Registrar Producto</button>
+        </div>
+      </form>
+     
+   <table class="table mt-3">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Subtotal</th>
+          <th scope="col">Iva</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in inventario %}
+          <tr>
+            <td>{{ item['producto'] }}</td>
+            <td>{{ item['cantidad'] }}</td>
+            <td>{{ item['precio'] }}</td>
+            <td>{{ item['subtotal'] }}</td>
+            <td>{{ item['iva'] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+         
+</body>
+</html>
